@@ -104,6 +104,8 @@ Once the device has successfully attached to a Wi-Fi Network, the Red LED will
 turn on. You can then press Button (SW2) to send an SMS to the mobile number you 
 configured in the source code.
 
+All details including errors are outputted to the console window in CCS.
+
 Peripherals Exercised
 ---------------------
 * Board_LED0 - CC3200_LP_LED_D7 - Red LED
