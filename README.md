@@ -11,6 +11,7 @@ A video of the prototype being used can be found here -
 
 The SMS Door Bell shows how to use a small embedded device to use REST APIs 
 over a secure TLS connection. Each button press performs the following steps
+
 1. Obtains the current time from a SNTP server (this is required by TLS encyrption)
 1. Obtain the OAuth 2.0 Authentication token using HTTP GET over TLS
 1. Send an SMS message using the SMS API using HTTP POST over TLS
@@ -56,10 +57,10 @@ You will also need to install UniFlash.
 Make the following changes to the Defines in the smsdoorbell.c file, so that
 the application will use your credientials and mobile number.
 
-#define POST_DATA   "{\"to\":\"0448922942\", \"body\":\"Knock, knock!\"}" //Change to your preferred mobile number
+define POST_DATA   "{\"to\":\"0448922942\", \"body\":\"Knock, knock!\"}" //Change to your preferred mobile number
 
-#define APP_KEY 	"yourapikey" // Your Telstra Consumer Key
-#define APP_SECRET	"yourapisecret" // Your  Telstra Consumer Secret
+define APP_KEY 	"yourapikey" // Your Telstra Consumer Key
+define APP_SECRET	"yourapisecret" // Your  Telstra Consumer Secret
 
 **Install Root CA with UniFlash**
 
