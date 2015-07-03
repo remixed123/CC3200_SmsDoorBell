@@ -9,15 +9,18 @@ a button
 
 A video of the prototype being used can be found here - 
 
-The SMS Door Bell shows how to use a small embedded device to use REST APIs 
+The SMS Door Bell demostrates the use of a small embedded device that utilises REST APIs 
 over a secure TLS connection. Each button press performs the following steps
 
 1. Obtains the current time from a SNTP server (this is required by TLS encyrption)
-1. Obtain the OAuth 2.0 Authentication token using HTTP GET over TLS
-1. Send an SMS message using the SMS API using HTTP POST over TLS
+1. Obtain the OAuth 2.0 Authentication token from the Telstra API using HTTP GET over TLS
+1. Send an SMS message using the Telstra SMS API using HTTP POST over TLS
 
 These procedures are common in most REST API based solutions, and hence the code can be
 repurposed to be used in many different applications.
+
+All code is written in C and could be used as starting point for a real world mass produced 
+hardware device that could run from a battery.
 
 Prerequisites
 ------------
@@ -30,8 +33,9 @@ The following is required to implement this prototype.
 * UniFlash for the CC3200/CC3100 - http://processors.wiki.ti.com/index.php/CCS_UniFlash_-_CC3100/CC3200_Edition
 * CC3200 SDK v1.1 - http://www.ti.com/tool/cc3200sdk
 
-Note 1: That the Telstra SMS API will only work with Australian mobile phones numbers.
-Note 2: You will need to update TI-RTOS for SimpleLink from within CCS using CCS App Center
+**Note 1:** That the Telstra SMS API will only work with Australian mobile phones numbers.
+
+**Note 2:** You will need to update TI-RTOS for SimpleLink from within CCS using CCS App Center
 
 Setup Steps
 -----------
@@ -57,10 +61,9 @@ You will also need to install UniFlash.
 Make the following changes to the Defines in the smsdoorbell.c file, so that
 the application will use your credientials and mobile number.
 
-define POST_DATA   "{\"to\":\"0448922942\", \"body\":\"Knock, knock!\"}" //Change to your preferred mobile number
-
-define APP_KEY 	"yourapikey" // Your Telstra Consumer Key
-define APP_SECRET	"yourapisecret" // Your  Telstra Consumer Secret
+* define POST_DATA   "{\"to\":\"0448922942\", \"body\":\"Knock, knock!\"}" //Change to your preferred mobile number and message
+* define APP_KEY 	"yourapikey" // Your Telstra Consumer Key
+* define APP_SECRET	"yourapisecret" // Your  Telstra Consumer Secret
 
 **Install Root CA with UniFlash**
 
@@ -128,5 +131,17 @@ file.
 
 If you would like to extend features such as being able to set SMS number and message, 
 using an iOS APP then you could easily update the startproject_ios app - https://github.com/remixed123/startproject_ios
+
+Potential Updates
+-----------------
+
+The current code is a starting point for a developer, there could be additional features added to make it more flexible, here are a few.
+
+* Add multiple buttons for different people or different messages
+* Develop a mobile app or website where you can configure the SMS phone number to be used or to change the message sent
+* Add a LCD screen and have the ability for the device to display a message that was in response to the SMS
+* Run from a battery and add power management to ensure battery lasts a long time
+* Improve performance for apllication that requirer quicker messages
+
 
 
