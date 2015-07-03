@@ -7,7 +7,7 @@ The SMS Door Bell is a simple prototype that uses the Texas Instruments
 CC3200 LaunchPad and the Telstra SMS API to send a SMS Message by pressing
 a button
 
-A video of the prototype being used can be found here - 
+A video of the prototype being used can be found here - https://vimeo.com/132525037 
 
 The SMS Door Bell demostrates the use of a small embedded device that utilises REST APIs 
 over a secure TLS connection. Each button press performs the following steps
