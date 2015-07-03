@@ -99,16 +99,16 @@
 //*****************************************************************************
 
 #define APPLICATION_VERSION "1.0.0"
-#define APP_NAME            "Telstra SMS Door Bell"
+#define APP_NAME            "Telstra SMS Doorbell"
 
 //*****************************************************************************
 //                            HTTP DEFINES
 //*****************************************************************************
 #define POST_REQUEST_URI 	"/v1/sms/messages"
-#define POST_DATA           "{\"to\":\"0414664888\", \"body\":\"Knock, knock!\"}"
+#define POST_DATA           "{\"to\":\"0448913198\", \"body\":\"Knock, knock!\"}"
 
-#define APP_KEY 			"wmXuIXFrHRwjfAw75vOr7q6fhsW89idu" //"yourapikey" // YourTelstra Consumer Key
-#define APP_SECRET			"Uhw7K1I7o8gXZ4Gv" //"yourapisecret" // Your  Telstra Consumer Secret
+#define APP_KEY 			"yourapikey" // YourTelstra Consumer Key
+#define APP_SECRET			"yourapisecret" // Your  Telstra Consumer Secret
 
 #define HOST_NAME       	"api.telstra.com"
 #define HOST_PORT           443
