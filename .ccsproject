@@ -10,4 +10,5 @@
 	<createSlaveProjects value=""/>
 	<templateProperties value="id=com.ti.rtsc.TIRTOSsimplelink.example_0,type=rtsc,products=com.ti.rtsc.TIRTOSsimplelink,xdcToolsVersion=3.30.04.52,platform=ti.platforms.simplelink:CC3200,buildProfile=release,isHybrid=true,"/>
 	<isTargetManual value="false"/>
+	<connection value="common/targetdb/connections/Stellaris_ICDI_Connection.xml"/>
 </projectOptions>

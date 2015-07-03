@@ -23,8 +23,8 @@
 //
 //*****************************************************************************
 
-#ifndef STARTPROJECT_H_
-#define STARTPROJECT_H_
+#ifndef SMSDOORBELL_SMSDOORBELL_H_
+#define SMSDOORBELL_SMSDOORBELL_H_
 
 /* XDCtools Header files */
 #include <xdc/std.h>
@@ -102,5 +102,7 @@
 //	Sp_UNKNOWN_ERROR = -100
 //} spresult_t;
 
+void gpioButtonFxn0(void);
+void gpioButtonFxn1(void);
 
-#endif /* STARTPROJECT_H_ */
+#endif /* SMSDOORBELL_SMSDOORBELL_H_ */

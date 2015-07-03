@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>startproject_cc3200_ti-rtos</name>
+	<name>SmsDoorBell</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -25,4 +25,10 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>CC3200_SDK_ROOT</name>
+			<value>file:/C:/ti/CC3200SDK_1.1.0/cc3200-sdk</value>
+		</variable>
+	</variableList>
 </projectDescription>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, Texas Instruments Incorporated
+ * Copyright (c) 2015, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,25 +48,24 @@
 extern "C" {
 #endif
 
-#include <ti/drivers/GPIO.h>
-
 #define CC3200_LP_LED_OFF (0)
-#define CC3200_LP_LED_ON  (~0)
-
-/* GPIO_Callbacks structure for GPIO interrupts */
-extern const GPIO_Callbacks CC3200_LP_gpioPortA1Callbacks;
-extern const GPIO_Callbacks CC3200_LP_gpioPortA2Callbacks;
+#define CC3200_LP_LED_ON  (1)
 
 /*!
  *  @def    CC3200_LP_GPIOName
  *  @brief  Enum of GPIO names on the CC3200_LP dev board
  */
 typedef enum CC3200_LP_GPIOName {
-    CC3200_LP_LED_D7 = 0,
-    CC3200_LP_LED_D6,
-    CC3200_LP_LED_D5,
-    CC3200_LP_SW2,
+    CC3200_LP_SW2 = 0,
     CC3200_LP_SW3,
+    CC3200_LP_LED_D7,
+/*
+ *  CC3200_LP_LED_D5 and CC3200_LP_LED_D6 are shared with the I2C and PWM
+ *  peripherals. In order for those examples to work, these LEDs are taken out
+ *  of gpioPinCOnfig[]
+ */
+    //CC3200_LP_LED_D6,
+    //CC3200_LP_LED_D5,
 
     CC3200_LP_GPIOCOUNT
 } CC3200_LP_GPIOName;
@@ -80,6 +79,27 @@ typedef enum CC3200_LP_I2CName {
 
     CC3200_LP_I2CCOUNT
 } CC3200_LP_I2CName;
+
+/*!
+ *  @def    CC3200_LP_I2SName
+ *  @brief  Enum of I2S names on the CC3200_LP dev board
+ */
+typedef enum CC3200_LP_I2SName {
+    CC3200_LP_I2S0 = 0,
+
+    CC3200_LP_I2SCOUNT
+} CC3200_LP_I2SName;
+
+/*!
+ *  @def    CC3200_LP_PWMName
+ *  @brief  Enum of PWM names on the CC3200_LP dev board
+ */
+typedef enum CC3200_LP_PWMName {
+    CC3200_LP_PWM6 = 0,
+    CC3200_LP_PWM7,
+
+    CC3200_LP_PWMCOUNT
+} CC3200_LP_PWMName;
 
 /*!
  *  @def    CC3200_LP_SDSPIName
@@ -133,8 +153,7 @@ extern void CC3200_LP_initDMA(void);
 /*!
  *  @brief  Initialize the general board specific settings
  *
- *  This function initializes the general board specific settings. This include
- *     - Enable clock sources for peripherals
+ *  This function initializes the general board specific settings.
  */
 extern void CC3200_LP_initGeneral(void);
 
@@ -144,7 +163,7 @@ extern void CC3200_LP_initGeneral(void);
  *  This function initializes the board specific GPIO settings and
  *  then calls the GPIO_init API to initialize the GPIO module.
  *
- *  The GPIOs controlled by the GPIO module are determined by the GPIO_config
+ *  The GPIOs controlled by the GPIO module are determined by the GPIO_PinConfig
  *  variable.
  */
 extern void CC3200_LP_initGPIO(void);
@@ -159,6 +178,28 @@ extern void CC3200_LP_initGPIO(void);
  *  I2C_config variable.
  */
 extern void CC3200_LP_initI2C(void);
+
+/*!
+ *  @brief  Initialize board specific I2S settings
+ *
+ *  This function initializes the board specific I2S settings and then calls
+ *  the I2S_init API to initialize the I2S module.
+ *
+ *  The I2S peripherals controlled by the I2S module are determined by the
+ *  I2S_config variable.
+ */
+extern void CC3200_LP_initI2S(void);
+
+/*!
+ *  @brief  Initialize board specific PWM settings
+ *
+ *  This function initializes the board specific PWM settings and then calls
+ *  the PWM_init API to initialize the PWM module.
+ *
+ *  The PWM peripherals controlled by the PWM module are determined by the
+ *  PWM_config variable.
+ */
+extern void CC3200_LP_initPWM(void);
 
 /*!
  *  @brief  Initialize board specific SDSPI settings

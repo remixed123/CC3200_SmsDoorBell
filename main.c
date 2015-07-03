@@ -1,22 +1,20 @@
 //*****************************************************************************
 //
-// Application Name        - startproject
-// Application Version     - 1.1.0
-// Application Modify Date - 23rd of December 2014
+// Application Name        - smsdoorbell
+// Application Version     - 1.0.0
+// Application Modify Date - 2nd of July 2015
 // Application Developer   - Glenn Vassallo
 // Application Contact	   - contact@swiftsoftware.com.au
-// Application Repository  - https://github.com/remixed123/startproject
+// Application Repository  - https://github.com/remixed123/smsdoorbell
 //
-// Application Overview    - This example project provides a starting
-//                           point for using the "full" TI-RTOS implementation
-//                           with the CC3200 LaunchPad. This is different
-//                           to the TI-RTOS implementation in the CC3200
-//                           SDK, in that it not only includes SYS/BIOS
-//                           components on TI-RTOS, but also utilises the
-//                           peripheral and wifi drivers that are supplied
-//                           with TI-RTOS.
+// Application Overview    - This example connects to a access point,
+//                           it then allows the sending of an sms by
+//                           pressing the SW2 button. It is using the
+//                           Telstra APIs, and will only work with Australian
+//                           mobile numbers. The code could be used as a
+//                           starting point for any REST API application
 //
-// Application Details     - https://github.com/remixed123/startproject/readme.txt
+// Application Details     - https://github.com/remixed123/smsdoorbell/readme.md
 //
 // Further Details         - If you would like to chat about your next CC3200 project
 //                           then feel free contact us at contact@swiftsoftware.com.au
@@ -44,6 +42,8 @@
 //#include <simplelink.h>
 #include <osi.h>
 
+#include "smsdoorbell.h"
+
 /* Spawn Task Priority */
 int SPAWN_TASK_PRI = 3;
 
@@ -59,7 +59,7 @@ int main(void)
     /* Turn on user LED */
     GPIO_write(Board_LED0, Board_LED_ON);
 
-    System_printf("Starting the StartProject example\nSystem provider is set"
+    System_printf("Starting the SMS Door Bell example\nSystem provider is set"
                   " to SysMin. Halt the target to view any SysMin contents in"
                   " ROV.\n\n");
     /* SysMin will only print to the console when you call flush or exit */
@@ -67,8 +67,24 @@ int main(void)
 
     /* Turn off All LEDs. It will be used as a connection indicator */
     GPIO_write(Board_LED0, Board_LED_ON); //Red
-    GPIO_write(Board_LED1, Board_LED_ON); //Orange
-    GPIO_write(Board_LED2, Board_LED_ON); //Green
+    //GPIO_write(Board_LED1, Board_LED_ON); //Orange
+    //GPIO_write(Board_LED2, Board_LED_ON); //Green
+
+    /* install Button callback */
+    GPIO_setCallback(Board_BUTTON0, gpioButtonFxn0);
+
+    /* Enable interrupts */
+    GPIO_enableInt(Board_BUTTON0);
+
+    /*
+     *  If more than one input pin is available for your device, interrupts
+     *  will be enabled on Board_BUTTON1.
+     */
+//    if (Board_BUTTON0 != Board_BUTTON1) {
+//        /* install Button callback */
+//        GPIO_setCallback(Board_BUTTON1, gpioButtonFxn1);
+//        GPIO_enableInt(Board_BUTTON1);
+//    }
 
     /*
      * The SimpleLink Host Driver requires a mechanism to allow functions to

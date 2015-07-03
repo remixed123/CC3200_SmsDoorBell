@@ -18,8 +18,8 @@
 //
 //*****************************************************************************
 
-#ifndef SIMPLELINKLIBRARY_H_
-#define SIMPLELINKLIBRARY_H_
+#ifndef SMSDOORBELL_SIMPLELINKLIBRARY_H_
+#define SMSDOORBELL_SIMPLELINKLIBRARY_H_
 
 #include "simplelink.h"
 
@@ -28,10 +28,10 @@
  //*****************************************************************************
 #define DEVICE_VERSION			"1.0.0"
 #define DEVICE_MANUFACTURE		"SWIFT_SOFTWARE"
-#define DEVICE_NAME 			"STARTPROJECT"
+#define DEVICE_NAME 			"SMSDOORBELL"
 #define DEVICE_MODEL			"CC3200"
-#define DEVICE_AP_DOMAIN_NAME	"startproject.net"
-#define DEVICE_SSID_AP_NAME		"StartProjectAP"
+#define DEVICE_AP_DOMAIN_NAME	"smsdoorbell.net"
+#define DEVICE_SSID_AP_NAME		"SmsDoorBellAP"
 
  //*****************************************************************************
  // mDNS Defines
@@ -72,4 +72,4 @@ int setDeviceTimeDate();
 int registerMdnsService();
 int unregisterMdnsService();
 
-#endif /* SIMPLELINKLIBRARY_H_ */
+#endif /* SMSDOORBELL_SIMPLELINKLIBRARY_H_ */
